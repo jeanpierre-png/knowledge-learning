@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    font-family: "Comic Sans MS", Arial, sans-serif;
+    background-color: #f1f8fc;
+    color: #384050;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00497c;
+    color: white;
+    padding: 20px 40px;
+}
+
+.logo img {
+    max-height: 70px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.active-link {
+    color: #82b864;
+    font-weight: bold;
+}
+
+main {
+    min-height: 70vh;
+}
+
+.formation {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #0074c7;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.home-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.theme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+
+.theme article {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}

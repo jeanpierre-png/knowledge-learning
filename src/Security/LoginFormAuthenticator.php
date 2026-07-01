@@ -31,13 +31,12 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public function authenticate(Request $request): Passport
     {
         $email = $request->getPayload()->getString('email');
-
+        
         $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
         $user = $this->userRepository->findOneBy(['email' => $email]);
 
-        
-
+    
         if (!$user) {
             throw new CustomUserMessageAuthenticationException(
                 'Email introuvable.'
