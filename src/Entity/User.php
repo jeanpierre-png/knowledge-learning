@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -48,10 +50,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $updatedBy = null;
 
+    /**
+     * @var Collection<int, Purchase>
+     */
+    #[ORM\OneToMany(targetEntity: Purchase::class, mappedBy: 'user')]
+    private Collection $purchases;
+
+    /**
+     * @var Collection<int, LessonProgress>
+     */
+    #[ORM\OneToMany(targetEntity: LessonProgress::class, mappedBy: 'user')]
+    private Collection $lessonProgress;
+
+    /**
+     * @var Collection<int, Certification>
+     */
+    #[ORM\OneToMany(targetEntity: Certification::class, mappedBy: 'user')]
+    private Collection $certifications;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->roles = ['ROLE_CLIENT'];
+        $this->purchases = new ArrayCollection();
+        $this->lessonProgress = new ArrayCollection();
+        $this->certifications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,6 +160,96 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Purchase>
+     */
+    public function getPurchases(): Collection
+    {
+        return $this->purchases;
+    }
+
+    public function addPurchase(Purchase $purchase): static
+    {
+        if (!$this->purchases->contains($purchase)) {
+            $this->purchases->add($purchase);
+            $purchase->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePurchase(Purchase $purchase): static
+    {
+        if ($this->purchases->removeElement($purchase)) {
+            // set the owning side to null (unless already changed)
+            if ($purchase->getUser() === $this) {
+                $purchase->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LessonProgress>
+     */
+    public function getLessonProgress(): Collection
+    {
+        return $this->lessonProgress;
+    }
+
+    public function addLessonProgress(LessonProgress $lessonProgress): static
+    {
+        if (!$this->lessonProgress->contains($lessonProgress)) {
+            $this->lessonProgress->add($lessonProgress);
+            $lessonProgress->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLessonProgress(LessonProgress $lessonProgress): static
+    {
+        if ($this->lessonProgress->removeElement($lessonProgress)) {
+            // set the owning side to null (unless already changed)
+            if ($lessonProgress->getUser() === $this) {
+                $lessonProgress->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Certification>
+     */
+    public function getCertifications(): Collection
+    {
+        return $this->certifications;
+    }
+
+    public function addCertification(Certification $certification): static
+    {
+        if (!$this->certifications->contains($certification)) {
+            $this->certifications->add($certification);
+            $certification->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCertification(Certification $certification): static
+    {
+        if ($this->certifications->removeElement($certification)) {
+            // set the owning side to null (unless already changed)
+            if ($certification->getUser() === $this) {
+                $certification->setUser(null);
+            }
+        }
 
         return $this;
     }
