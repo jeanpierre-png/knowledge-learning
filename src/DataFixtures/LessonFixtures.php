@@ -15,16 +15,30 @@ class LessonFixtures extends Fixture implements DependentFixtureInterface
     {
         $lessons = [
 
-            CourseFixtures::COURSE_MUSIQUE =>[
+            CourseFixtures::COURSE_GUITARE =>[
 
                 [   
-                    'title' => "Découverte de l'instrument",
-                    'content' => "Origine.",
+                    'title' => "Leçon n°1 : Découverte de l’instrument",
+                    'price' => '26.00', 
                     'order' => 1,
                 ],
                 [   
-                    'title' => "Découverte de l'instrument",
-                    'content' => "Le premier instrument.",
+                    'title' => "Leçon n°2 : Les accords et les gammes",
+                    'price' => '26.00', 
+                    'order' => 2,
+                ],
+            ],
+
+            CourseFixtures::COURSE_PIANO =>[
+
+                [   
+                    'title' => "Leçon n°1 : Découverte de l’instrument",
+                    'price' => '26.00', 
+                    'order' => 1,
+                ],
+                [   
+                    'title' => "Leçon n°2 : Les accords et les gammes",
+                    'price' => '26.00', 
                     'order' => 2,
                 ],
             ],
@@ -32,13 +46,13 @@ class LessonFixtures extends Fixture implements DependentFixtureInterface
             CourseFixtures::COURSE_INFORMATIQUE => [
 
                 [
-                    'title' => "Les langages HTLM et CSS",
-                    'content' => "Découverte des bases.",
+                    'title' => "Leçon n°1 : Les langages Html et CSS",
+                    'price' => '32.00', 
                     'order' => 1,
                 ],
                 [
-                    'title' => "Dynamiser votre site web avec Javascript",
-                    'content' => "Introduction à Javascript.",
+                    'title' => "Leçon n°2 : Dynamiser votre site avec Javascript",
+                    'price' => '32.00', 
                     'order' => 2,
                 ],
             ],
@@ -46,13 +60,13 @@ class LessonFixtures extends Fixture implements DependentFixtureInterface
             CourseFixtures::COURSE_JARDINAGE => [
 
                 [
-                    'title' => "Les outils essentiels du jardinier",
-                    'content' => "Présentation de ces principaux outils.",
+                    'title' => "Leçon n°1 : Les outils du jardinier",
+                    'price' => '16.00', 
                     'order' => 1,
                 ],
                 [
-                    'title' => "Jardinier au rythme des saisons",
-                    'content' => "Comprendre les principes du jardinage.",
+                    'title' => "Leçon n°2 : Jardiner avec la lune",
+                    'price' => '16.00', 
                     'order' => 2,
                 ],
             ],
@@ -60,13 +74,27 @@ class LessonFixtures extends Fixture implements DependentFixtureInterface
             CourseFixtures::COURSE_CUISINE => [
 
                 [
-                    'title' => "Association des couleurs",
-                    'content' => "Découverte des saveurs et des mariages.",
+                    'title' => "Leçon n°1 : Les modes de cuisson ",
+                    'price' => '23.00', 
                     'order' => 1,
                 ],
                 [
-                    'title' => "Techniques de maintien",
-                    'content' => "Découvrir comment tenir un couteau.",
+                    'title' => "Leçon n°2 : Les saveurs ",
+                    'price' => '23.00', 
+                    'order' => 2,
+                ],
+            ],
+
+            CourseFixtures::COURSE_DRESSAGE => [
+
+                [
+                    'title' => "Leçon n°1 : Mettre en œuvre le style dans l’assiette",
+                    'price' => '26.00',  
+                    'order' => 1,
+                ],
+                [
+                    'title' => "Leçon n°2 : Harmoniser un repas à quatre plats",
+                    'price' => '26.00', 
                     'order' => 2,
                 ],
             ],
@@ -76,7 +104,8 @@ class LessonFixtures extends Fixture implements DependentFixtureInterface
             foreach ($courseLessons as $data) {
                 $lesson = new Lesson();
                 $lesson->setTitle($data['title']);
-                $lesson->setContent($data['content']);
+                $lesson->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+                $lesson->setPrice($data['price']);
                 $lesson->setVideoUrl(null);
                 $lesson->setOrderIndex($data['order']);
                 $lesson->setCourse($this->getReference($courseReference, Course::class));

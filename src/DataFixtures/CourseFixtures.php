@@ -12,39 +12,47 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 class CourseFixtures extends Fixture implements dependentFixtureInterface
 {
 
-    public const COURSE_MUSIQUE = 'course_musique';
+    public const COURSE_GUITARE = 'course_guitare';
+    public const COURSE_PIANO = 'course_piano';
     public const COURSE_INFORMATIQUE = 'course_informatique';
     public const COURSE_JARDINAGE = 'course_jardinage';
     public const COURSE_CUISINE = 'course_cuisine';
+    public const COURSE_DRESSAGE = 'course_dressage';
 
     public function load(ObjectManager $manager): void
     {
       $courses = [
-        self::COURSE_MUSIQUE => [
-          'title' => "Cursus d'initiation à un instrument de musique",
-          'description' => "Apprendre les bases d'un instrument.",
-          'price' => '70.00', 
+        self::COURSE_GUITARE=> [
+          'title' => "Cursus d’initiation à la guitare",
+          'price' => '50.00', 
+          'theme' => ThemeFixtures::THEME_MUSIQUE,
+        ],
+        self::COURSE_PIANO => [
+          'title' => "Cursus d’initiation au piano",
+          'price' => '50.00', 
           'theme' => ThemeFixtures::THEME_MUSIQUE,
         ],
 
         self::COURSE_INFORMATIQUE => [
-          'title' => "Cursus d'initiation au développement web et web mobile", 
-          'description' => "Découvrir l'écosystème du codage.",
-          'price' => '50.00', 
+          'title' => "Cursus d'initiation au développement web", 
+          'price' => '60.00', 
           'theme' => ThemeFixtures::THEME_INFORMATIQUE,
         ],
 
         self::COURSE_JARDINAGE =>[
           'title' => "Cursus d'initiation au jardinage", 
-          'description' => "Apprendre les bases du jardinage.",
           'price' => '30.00', 
           'theme' => ThemeFixtures::THEME_JARDINAGE,
         ],
 
         self::COURSE_CUISINE => [
           'title' => "Cursus d'initiation à la cuisine", 
-          'description' => "Découvrir les bases de la cuisine.",
-          'price' => '90.00', 
+          'price' => '44.00', 
+          'theme' => ThemeFixtures::THEME_CUISINE,
+        ],
+        self::COURSE_DRESSAGE => [
+          'title' => "Cursus d’initiation à l’art du dressage culinaire", 
+          'price' => '48.00', 
           'theme' => ThemeFixtures::THEME_CUISINE,
         ],
       ];
@@ -52,7 +60,7 @@ class CourseFixtures extends Fixture implements dependentFixtureInterface
       foreach ($courses as $reference => $data) {
         $course = new Course();
         $course->setTitle($data['title']);
-        $course->setDescription($data['description']);
+        $course->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
         $course->setPrice($data['price']);
         $course->setImage(null);
         $course->setTheme($this->getReference($data['theme'], Theme::class));
