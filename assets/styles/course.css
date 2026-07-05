@@ -1,0 +1,49 @@
+.container {
+    width: 80%;
+    margin: 40px;
+}
+
+.card {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px black;
+    margin-bottom: 30px;
+}
+
+.lesson-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.lesson-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px white;
+    border: 1px solid black;
+}
+
+.lesson-item:hover {
+    background: #f1f8fc;
+}
+
+.btn {
+    background: #0074c7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-buy:hover {
+    background: white;
+}

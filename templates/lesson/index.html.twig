@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1>{{ lesson.title }}</h1>
+
+    <div class="lesson-card">
+        <p><strong>Prix :</strong> {{ lesson.price }} €</p>
+
+        <hr>
+        <div class="lesson-content">
+        
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+
+        </div>  
+        
+        <hr>
+
+        <div class="lesson-actions">
+
+            <button class="btn">Acheter cette leçon</button>
+
+            <button class="btn btn-success">Valider la leçon</button>
+
+        </div>
+
+    </div>
+
+    <a href="{{ path('app_course', { id: lesson.course.id }) }}">Retour au cursus</a>
+
+</div>
+{% endblock %}
