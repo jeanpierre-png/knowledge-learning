@@ -1,0 +1,35 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.course-card {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px black;
+}
+
+.btn {
+    background: #0074c7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color: #384050 ;
+}
+
+.btn:hover {
+    background: #00497c;
+}
+
+.home {
+    margin: 30px;
+}

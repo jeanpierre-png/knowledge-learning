@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ theme.name }} - knowledge learning{% endblock %}
+
+{% block body %}
+
+<h1>{{ theme.name }}</h1>
+
+<div class="course-card">
+
+    {% for course in theme.courses %}
+
+        <p>
+            <a href={{ path('app_course', { id: course.id }) }}">{{ course.title }} - {{ course.price}} €</a>
+        </p>
+
+    {% endfor %}
+    
+</div>
+
+
+<a class="home" href="{{ path('app_home') }}">Retour accueil</a>
+
+{% endblock %}

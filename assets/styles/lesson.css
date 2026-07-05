@@ -1,0 +1,38 @@
+.container {
+    width: 80%;
+    margin: 40px;
+}
+
+.lesson-card {
+    background: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.801);
+}
+
+.lesson-content {
+    color: #384050;
+}
+
+.btn {
+    background: #0074c7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover{
+    background: #00497c;
+}
+
+.btn-success:hover {
+    background: #82b864;
+}
+
+hr {
+    border: none;
+}

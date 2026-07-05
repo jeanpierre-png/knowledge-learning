@@ -54,7 +54,6 @@ main {
 
 .theme {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     gap: 16px;
 }
@@ -63,4 +62,8 @@ main {
     background: white;
     padding: 30px;
     border-radius: 8px;
+}
+
+.theme a {
+    text-decoration: none;
 }

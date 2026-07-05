@@ -29,6 +29,10 @@ nav a {
     color: white;
 }
 
+a:hover {
+    color: #82b864;
+}
+
 .active-link {
     font-weight: bold;
     text-decoration: underline;

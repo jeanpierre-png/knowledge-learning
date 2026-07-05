@@ -17,15 +17,16 @@
 <section class="home-section">
 
     <h2>Nos thémes de formation</h2>
-
-    <div class="theme">
-        <acticle>Musique</acticle>
-        <acticle>Informatique</acticle>
-        <acticle>Jardinage</acticle>
-        <acticle>Cuisine</acticle>
-    </div>
+    
+    {% for theme in themes %}
 
 </section>
+
+<div class="theme">
+    <a href={{ path('app_theme', { id: theme.id }) }}>{{ theme.name }}</a>
+</div>
+
+{% endfor %}
 
 {% endblock %}
 
