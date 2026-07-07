@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes formations{% endblock %}
+
+{% block body %}
+
+<h1>Mes formations</h1>
+
+<h2>Mes achats</h2>
+
+{% for purchase in purchases %}
+
+    <div class="card">
+
+        {% if purchase.course %}
+
+            <h3>{{ purchase.course.title }}</h3>
+            <p>Cursus acheté</p>
+            <a href="{{ path('app_course', { id: purchase.course.id }) }}">Voir le Cursus</a>
+        {% elseif purchase.lesson %}
+
+            <h3>{{ purchase.lesson.title }}</h3>
+            <p>Leçon achetée</p>
+            <a href="{{ path('app_lesson', { id: purchase.lesson.id}) }}">Voir la leçon</a>
+
+        {% endif %}
+
+    </div>
+
+{% else %}
+
+    <p>Vous n'avez encore acheté aucun formation.</p>
+
+{% endfor %}
+{% endblock %}

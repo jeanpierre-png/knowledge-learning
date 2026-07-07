@@ -9,7 +9,6 @@
     <h1>{{ lesson.title }}</h1>
 
     <div class="lesson-card">
-        <p><strong>Prix :</strong> {{ lesson.price }} €</p>
 
         <hr>
         <div class="lesson-content">
@@ -25,9 +24,7 @@
 
         <div class="lesson-actions">
 
-            <button class="btn">Acheter cette leçon</button>
-
-            <button class="btn btn-success">Valider la leçon</button>
+            <a class="btn btn-success" href="{{ path('app_lesson_validate', { id: lesson.id }) }}">Valider la leçon</a>
 
         </div>
 
