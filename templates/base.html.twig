@@ -31,14 +31,28 @@
                 </a>
 
                 {% if app.user %}
-                    <a href="#">Mes formations</a>
-                    <a href="#">Mes certifications</a>
+
+                    <a class="{% if app.request.attributes.get('_route') == 'app_my_courses' %}active-link{% endif %}"  
+                        href="{{ path('app_my_courses') }}">
+                        Mes formations
+                    </a>
+
+                    <a class="{% if app.request.attributes.get('_route') == 'app_my_certifications' %}active-link{% endif %}"  
+                        href="{{ path('app_my_certifications') }}">
+                        Mes certifications
+                    </a>
 
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="#">Back-office</a>
+
+                        <a class="{% if app.request.attributes.get('_route') == 'admin' %}active-link{% endif %}"  
+                            href="{{ path('admin') }}">
+                            Back-office
+                        </a>
+
                     {% endif %}
 
                     <a href="{{ path('app_logout')}}">Se déconnecter</a>
+
                 {% else %}
 
                     <a  class="{% if app.request.attributes.get('_route') == 'app_register' %}active-link{% endif %}"  
@@ -46,15 +60,22 @@
                     >
                         S'inscrire
                     </a>
+
                     <a  class="{% if app.request.attributes.get('_route') == 'app_login' %}active-link{% endif %}"  
                         href="{{ path('app_login') }}"
                     >
                         Se connecter
                     </a>
+                    
                 {% endif %}
             </nav>
         </header>
-        
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+        {% endfor %}
 
         <main>
             {% block body %}{% endblock %}
