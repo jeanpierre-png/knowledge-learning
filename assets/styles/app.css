@@ -1,6 +1,9 @@
+* {
+    font-family: "Comic Sans MS", Arial, sans-serif;
+}
+
 body {
     margin: 0;
-    font-family: "Comic Sans MS", Arial, sans-serif;
     background-color: #f1f8fc;
     color: #384050;
 }
