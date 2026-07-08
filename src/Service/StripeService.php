@@ -13,12 +13,12 @@ class StripeService
 {
     public function __construct(private string $stripeSecretKey, private UrlGeneratorInterface $urlGenerator)
     {
-        $this->secretKey = $stripeSecretKey;
+        
     }
 
     public function createCourseCheckoutSession(Course $course): Session
     {
-        Stripe::setApiKey($this->secretKey);
+        Stripe::setApiKey($this->stripeSecretKey);
 
         return Session::create([
             'payment_method_types' => ['card'],
@@ -44,7 +44,7 @@ class StripeService
 
     public function createLessonCheckoutSession(Lesson $lesson): Session
     {
-        Stripe::setApiKey($this->secretKey);
+        Stripe::setApiKey($this->stripeSecretKey);
 
         return Session::create([
             'payment_method_types' => ['card'],

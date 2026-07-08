@@ -99,7 +99,7 @@ final class LessonController extends AbstractController
                 'lesson' => $courseLesson,
             ]);
 
-            if ($lessonProgress || $courseLesson === $lesson) {
+            if ($progress || $courseLesson === $lesson) {
                 $validatedLessons++;
             }
         }
